@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
-from statsmodels.regression.linear_model import OLSResults
-
+import joblib
 
 st.set_page_config(
     page_title="Equipment Value Calculator",
@@ -15,12 +13,12 @@ st.set_page_config(
 # LOAD MODEL
 # -------------------------
 
-model = OLSResults.load(
-    "models/residual_value_model.pkl"
+model = joblib.load(
+    "model/residual_value_model.joblib"
 )
 
 classes = pd.read_csv(
-    "models/equipment_classes.csv",
+    "model/equipment_classes.csv",
     header=None
 )[0].tolist()
 
