@@ -13,14 +13,21 @@ st.set_page_config(
 # LOAD MODEL
 # -------------------------
 
-model = joblib.load(
-    "model/residual_value_model.joblib"
-)
+@st.cache_resource
+def load_model():
+    return joblib.load("model/residual_value_model.joblib")
 
-classes = pd.read_csv(
-    "model/equipment_classes.csv",
-    header=None
-)[0].tolist()
+
+@st.cache_data
+def load_classes():
+    return pd.read_csv(
+        "model/equipment_classes.csv",
+        header=None
+    )[0].tolist()
+
+
+model = load_model()
+classes = load_classes()
 
 
 # -------------------------
