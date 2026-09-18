@@ -48,9 +48,27 @@ st.write(
 # INPUTS
 # -------------------------
 
+# Main equipment categories
+main_categories = sorted({
+    item.split(" - ", 1)[0]
+    for item in classes
+})
+
+main_category = st.selectbox(
+    "Equipment category",
+    main_categories
+)
+
+# Full model categories belonging to the selected main category
+matching_classes = [
+    item for item in classes
+    if item.startswith(f"{main_category} - ")
+]
+
 equipment_class = st.selectbox(
-    "Equipment type and size",
-    classes
+    "Equipment size or class",
+    matching_classes,
+    format_func=lambda item: item.split(" - ", 1)[1]
 )
 
 age = st.slider(
