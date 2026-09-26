@@ -51,8 +51,9 @@ The current application focuses specifically on making the resale-value model ac
 * Machine condition, manufacturer, model, location, attachments, and auction-specific factors are not included in the final model.
 * Equipment classes with limited historical data may produce less reliable estimates.
 * Results should be treated as analytical estimates rather than formal equipment appraisals.
+* (Readers should keep in mind the limited amount of public data available online for this niche)
 
-## Technologies
+# Technologies
 
 * Python
 * pandas and NumPy
